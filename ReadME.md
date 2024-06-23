@@ -33,7 +33,7 @@ Cons: inability to continue tracking after the loss of the object.
 
 pc | rasp
 :-: | :-:
-![](pc_results/pc_v1_KCF_opt.gif) | ![](rasp_results/rasp_v1_KCF.gif)
+![](pc_results/pc_v1_KCF_opt.gif) | ![](rasp_results/rasp_v1_KCF_opt.gif)
 
 ### TLD (Tracking Learning Detection) Tracker
 TLD Tracker allows you to decompose the task of tracking an object into three processes: tracking, learning and detecting. The tracker (based on the MedianFlow tracker) tracks the object, while the detector localizes external signs and corrects the tracker if necessary. The learning part evaluates detection errors and prevents them in the future by recognizing missed or false detections.
@@ -44,7 +44,7 @@ TLD Tracker allows you to decompose the task of tracking an object into three pr
 
 pc | rasp
 :-: | :-:
-![](pc_results/pc_v1_TLD_opt.gif) | ![](rasp_results/rasp_v1_TLD.gif)
+![](pc_results/pc_v1_TLD_opt.gif) | ![](rasp_results/rasp_v1_TLD_opt.gif)
 
 ### Median Flow Tracker
 Median Tracker is based on the Lucas-Kanade method. The algorithm tracks the movement of the object in the forward and backward directions in time and estimates the error of these trajectories, which allows the tracker to predict the further position of the object in real-time.
@@ -52,7 +52,7 @@ Pros: sufficiently high speed and tracking accuracy, if the object isn’t overl
 Cons: high probability of object loss at high speed of its movement.
 pc | rasp
 :-: | :-:
-![](pc_results/pc_v1_MEDIANFLOW_opt.gif) | ![](rasp_results/rasp_v1_MEDIANFLOW.gif)
+![](pc_results/pc_v1_MEDIANFLOW_opt.gif) | ![](rasp_results/rasp_v1_MEDIANFLOW_opt.gif)
 
 
 ### GOTURN (Generic Object Tracking Using Regression Network) Tracker
@@ -61,7 +61,7 @@ Pros: comparatively good resistance to noise and obstructions.
 Cons: the accuracy of tracking objects depends on the data on which the model was trained, which means that the algorithm may poorly track some objects selected by the user. Loses an object and shifts to another if the speed of the first one is too high.
 pc | rasp
 :-: | :-:
-![](pc_results/pc_v1_GOTURN_opt.gif) | ![](rasp_results/rasp_v1_GOTURN.gif)
+![](pc_results/pc_v1_GOTURN_opt.gif) | ![](rasp_results/rasp_v1_GOTURN_opt.gif)
 
 ### MOSSE Tracker
 MOSSE Tracker is based on the calculation of adaptive correlations in Fourier space. The filter minimizes the sum of squared errors between the actual correlation output and the predicted correlation output. This tracker is robust to changes in lighting, scale, pose, and non-rigid deformations of the object.
@@ -69,7 +69,7 @@ Pros: very high tracking speed, more successful in continuing tracking the objec
 Cons: high likelihood of continuing tracking if the subject is lost and does not appear in the frame.
 pc | rasp
 :-: | :-:
-![](pc_results/pc_v1_MOSSE_opt.gif) | ![](rasp_results/rasp_v1_MOSSE.gif)
+![](pc_results/pc_v1_MOSSE_opt.gif) | ![](rasp_results/rasp_v1_MOSSE_opt.gif)
 
 ### CSRT Tracker
 CSRT Tracker uses spatial reliability maps for adjusting the filter support to the part of the selected region from the frame for tracking, which gives an ability to increase the search area and track non-rectangular objects. Reliability indices reflect the quality of the studied filters by channel and are used as weights for localization. Thus, using HoGs and Colornames as feature sets, the algorithm performs relatively well.
@@ -78,7 +78,7 @@ Cons: sufficiently low speed, an unstable operation when the object is lost.
 
 pc | rasp
 :-: | :-:
-![](pc_results/pc_v1_CSRT_opt.gif) | ![](rasp_results/rasp_v1_CSRT.gif)
+![](pc_results/pc_v1_CSRT_opt.gif) | ![](rasp_results/rasp_v1_CSRT_opt.gif)
 
 ## Experiment II: Testing SORT Method
 
@@ -94,7 +94,7 @@ State Update: Once the associations are established, the SORT algorithm updates 
 
 pc | rasp
 :-: | :-:
-![](sortResults/pc_SORT_v1_opt.gif) | ![](rasp_results/out_video3.mp4_KCF.gif)
+![](pc_results/pc_SORT_v1_opt.gif) | ![](rasp_results/rasp_SORT_v1_opt.gif)
 
 ## Expermint III: Testing DeepSORT Method
 ![alt text](image.png)
@@ -109,4 +109,4 @@ The deep appearance features used in DeepSORT are learned during training from a
 
 pc | rasp
 :-: | :-:
-![](sortResults/pc_DeepSORT_v1_opt.gif) | ![](rasp_results/out_video3.mp4_KCF.gif)
+![](pc_results/pc_DeepSORT_v1_opt.gif) | ![](rasp_results/rasp_DeepSORT_v1_opt.gif)
