@@ -13,27 +13,31 @@ Upon receiving a new frame, the classifier evaluates the detection pixels around
 Advantages: The tracker is quite precise in following the object, despite the algorithm being considered outdated.
 Disadvantages: The tracking speed is relatively slow, it’s highly sensitive to noise and obstructions, and it lacks the capability to cease tracking once the object goes missing.
 
-pc | rasp
-:-: | :-:
-![](pc_results/pc_v1_BOOSTING_opt.gif) | ![](rasp_results/rasp_v1_BOOSTING_opt.gif)
+
+Device|pc | rasp
+:-:|:-: | :-:
+Output Video| ![](pc_results/pc_v1_BOOSTING_opt.gif) | ![](rasp_results/rasp_v1_BOOSTING_opt.gif)
+Average FPS | 37.8 | 17.6
 
 ### MIL (Multiple Instance Learning) Tracker
 MIL Tracker has the same approach as BOOSTING, however, instead of guessing where the tracked object is in the next frame, an approach is used in which several potentially positive objects, called a “bag”, are selected around a positive definite object. A positive “bag” contains at least one positive result.
 Pros: more robust to noise, shows fairly good accuracy.
 Cons: relatively low speed and the impossibility of stopping tracking when the object is lost.
-pc | rasp
-:-: | :-:
-![](pc_results/pc_v1_MIL_opt.gif) | ![](rasp_results/rasp_v1_MIL_opt.gif)
 
+Device|pc | rasp
+:-:|:-: | :-:
+Output Video| ![](pc_results/pc_v1_MIL_opt.gif) | ![](rasp_results/rasp_v1_MIL_opt.gif)
+Average FPS | 12.4 | 6.8
 
 ### KCF (Kernelized Correlation Filters) Tracker
 KCF Tracker is a combination of two algorithms: BOOSTING and MIL. The concept of the method is that a set of images from a “bag” obtained by the MIL method has many overlapping areas. Correlation filtering applied to these areas makes it possible to track the movement of an object with high accuracy and to predict its further position.
 Pros: sufficiently high speed and accuracy, stops tracking when the tracked object is lost.
 Cons: inability to continue tracking after the loss of the object.
 
-pc | rasp
-:-: | :-:
-![](pc_results/pc_v1_KCF_opt.gif) | ![](rasp_results/rasp_v1_KCF_opt.gif)
+Device|pc | rasp
+:-:|:-: | :-:
+Output Video| ![](pc_results/pc_v1_KCF_opt.gif) | ![](rasp_results/rasp_v1_KCF_opt.gif)
+Average FPS | N | N
 
 ### TLD (Tracking Learning Detection) Tracker
 TLD Tracker allows you to decompose the task of tracking an object into three processes: tracking, learning and detecting. The tracker (based on the MedianFlow tracker) tracks the object, while the detector localizes external signs and corrects the tracker if necessary. The learning part evaluates detection errors and prevents them in the future by recognizing missed or false detections.
@@ -42,44 +46,50 @@ TLD Tracker allows you to decompose the task of tracking an object into three pr
 
 **Cons**: rather unpredictable behavior, there is the instability of detection and tracking, constant loss of an object, tracking similar objects instead of the selected one.
 
-pc | rasp
-:-: | :-:
-![](pc_results/pc_v1_TLD_opt.gif) | ![](rasp_results/rasp_v1_TLD_opt.gif)
+Device|pc | rasp
+:-:|:-: | :-:
+Output Video| ![](pc_results/pc_v1_TLD_opt.gif) | ![](rasp_results/rasp_v1_TLD_opt.gif)
+Average FPS | 18 | 8.4
 
 ### Median Flow Tracker
 Median Tracker is based on the Lucas-Kanade method. The algorithm tracks the movement of the object in the forward and backward directions in time and estimates the error of these trajectories, which allows the tracker to predict the further position of the object in real-time.
 Pros: sufficiently high speed and tracking accuracy, if the object isn’t overlapped by other objects and the speed of its movement is not too high. The algorithm quite accurately determines the loss of the object.
 Cons: high probability of object loss at high speed of its movement.
-pc | rasp
-:-: | :-:
-![](pc_results/pc_v1_MEDIANFLOW_opt.gif) | ![](rasp_results/rasp_v1_MEDIANFLOW_opt.gif)
 
+Device|pc | rasp
+:-:|:-: | :-:
+Output Video| ![](pc_results/pc_v1_MEDIANFLOW_opt.gif) | ![](rasp_results/rasp_v1_MEDIANFLOW_opt.gif)
+Average FPS | N | N
 
 ### GOTURN (Generic Object Tracking Using Regression Network) Tracker
 GOTURN Tracker algorithm is an “offline” tracker since it basically contains a deep convolutional neural network. Two images are fed into the network: “previous” and “current”. In the “previous” image, the position of the object is known, while in the “current” image, the position of the object must be predicted. Thus, both images are passed through a convolutional neural network, the output of which is a set of 4 points representing the coordinates of the predicted bounding box containing the object. Since the algorithm is based on the use of a neural network, the user needs to download and specify the model and weight files for further tracking of the object.
 Pros: comparatively good resistance to noise and obstructions.
 Cons: the accuracy of tracking objects depends on the data on which the model was trained, which means that the algorithm may poorly track some objects selected by the user. Loses an object and shifts to another if the speed of the first one is too high.
-pc | rasp
-:-: | :-:
-![](pc_results/pc_v1_GOTURN_opt.gif) | ![](rasp_results/rasp_v1_GOTURN_opt.gif)
+
+Device|pc | rasp
+:-:|:-: | :-:
+Output Video| ![](pc_results/pc_v1_GOTURN_opt.gif) | ![](rasp_results/rasp_v1_GOTURN_opt.gif)
+Average FPS | 20 | 1.9
 
 ### MOSSE Tracker
 MOSSE Tracker is based on the calculation of adaptive correlations in Fourier space. The filter minimizes the sum of squared errors between the actual correlation output and the predicted correlation output. This tracker is robust to changes in lighting, scale, pose, and non-rigid deformations of the object.
 Pros: very high tracking speed, more successful in continuing tracking the object if it was lost.
 Cons: high likelihood of continuing tracking if the subject is lost and does not appear in the frame.
-machiine|pc | rasp
+Device|pc | rasp
 :-:|:-: | :-:
-video|![](pc_results/pc_v1_MOSSE_opt.gif) | ![](rasp_results/rasp_v1_MOSSE_opt.gif)
+Output Video| ![](pc_results/pc_v1_MOSSE_opt.gif) | ![](rasp_results/rasp_v1_MOSSE_opt.gif)
 Average FPS | N | N
 
 ### CSRT Tracker
 CSRT Tracker uses spatial reliability maps for adjusting the filter support to the part of the selected region from the frame for tracking, which gives an ability to increase the search area and track non-rectangular objects. Reliability indices reflect the quality of the studied filters by channel and are used as weights for localization. Thus, using HoGs and Colornames as feature sets, the algorithm performs relatively well.
 Pros: among the previous algorithms it shows comparatively better accuracy, resistance to overlapping by other objects.
 Cons: sufficiently low speed, an unstable operation when the object is lost.
+Device|pc | rasp
+:-:|:-: | :-:
+Output Video| ![](pc_results/pc_v1_CSRT_opt.gif) | ![](rasp_results/rasp_v1_CSRT_opt.gif)
+Average FPS | 58.8 | 19.4
 
-pc | rasp
-:-: | :-:
-![](pc_results/pc_v1_CSRT_opt.gif) | ![](rasp_results/rasp_v1_CSRT_opt.gif)
+
 
 ## Experiment II: Testing SORT Method
 
