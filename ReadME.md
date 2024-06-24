@@ -15,7 +15,7 @@ Disadvantages: The tracking speed is relatively slow, it’s highly sensitive to
 
 pc | rasp
 :-: | :-:
-![](pc_results/pc_v1_BOOSTING_opt.gif) | ![](rasp_results/rasp_v1_BOOSTING.gif)
+![](pc_results/pc_v1_BOOSTING_opt.gif) | ![](rasp_results/rasp_v1_BOOSTING_opt.gif)
 
 ### MIL (Multiple Instance Learning) Tracker
 MIL Tracker has the same approach as BOOSTING, however, instead of guessing where the tracked object is in the next frame, an approach is used in which several potentially positive objects, called a “bag”, are selected around a positive definite object. A positive “bag” contains at least one positive result.
@@ -23,7 +23,7 @@ Pros: more robust to noise, shows fairly good accuracy.
 Cons: relatively low speed and the impossibility of stopping tracking when the object is lost.
 pc | rasp
 :-: | :-:
-![](pc_results/pc_v1_MIL_opt.gif) | ![](rasp_results/rasp_v1_MIL.gif)
+![](pc_results/pc_v1_MIL_opt.gif) | ![](rasp_results/rasp_v1_MIL_opt.gif)
 
 
 ### KCF (Kernelized Correlation Filters) Tracker
