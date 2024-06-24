@@ -67,9 +67,10 @@ pc | rasp
 MOSSE Tracker is based on the calculation of adaptive correlations in Fourier space. The filter minimizes the sum of squared errors between the actual correlation output and the predicted correlation output. This tracker is robust to changes in lighting, scale, pose, and non-rigid deformations of the object.
 Pros: very high tracking speed, more successful in continuing tracking the object if it was lost.
 Cons: high likelihood of continuing tracking if the subject is lost and does not appear in the frame.
-pc | rasp
-:-: | :-:
-![](pc_results/pc_v1_MOSSE_opt.gif) | ![](rasp_results/rasp_v1_MOSSE_opt.gif)
+machiine|pc | rasp
+:-:|:-: | :-:
+video|![](pc_results/pc_v1_MOSSE.gif) | ![](rasp_results/rasp_v1_MOSSE.gif)
+Average FPS | N | N
 
 ### CSRT Tracker
 CSRT Tracker uses spatial reliability maps for adjusting the filter support to the part of the selected region from the frame for tracking, which gives an ability to increase the search area and track non-rectangular objects. Reliability indices reflect the quality of the studied filters by channel and are used as weights for localization. Thus, using HoGs and Colornames as feature sets, the algorithm performs relatively well.
