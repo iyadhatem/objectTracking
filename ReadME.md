@@ -53,8 +53,10 @@ Average FPS | 18 | 8.4
 
 ### Median Flow Tracker
 Median Tracker is based on the Lucas-Kanade method. The algorithm tracks the movement of the object in the forward and backward directions in time and estimates the error of these trajectories, which allows the tracker to predict the further position of the object in real-time.
-Pros: sufficiently high speed and tracking accuracy, if the object isn’t overlapped by other objects and the speed of its movement is not too high. The algorithm quite accurately determines the loss of the object.
-Cons: high probability of object loss at high speed of its movement.
+
+**Pros**: sufficiently high speed and tracking accuracy, if the object isn’t overlapped by other objects and the speed of its movement is not too high. The algorithm quite accurately determines the loss of the object.
+
+**Cons**: high probability of object loss at high speed of its movement.
 
 Device|pc | rasp
 :-:|:-: | :-:
@@ -63,8 +65,10 @@ Average FPS | N | N
 
 ### GOTURN (Generic Object Tracking Using Regression Network) Tracker
 GOTURN Tracker algorithm is an “offline” tracker since it basically contains a deep convolutional neural network. Two images are fed into the network: “previous” and “current”. In the “previous” image, the position of the object is known, while in the “current” image, the position of the object must be predicted. Thus, both images are passed through a convolutional neural network, the output of which is a set of 4 points representing the coordinates of the predicted bounding box containing the object. Since the algorithm is based on the use of a neural network, the user needs to download and specify the model and weight files for further tracking of the object.
-Pros: comparatively good resistance to noise and obstructions.
-Cons: the accuracy of tracking objects depends on the data on which the model was trained, which means that the algorithm may poorly track some objects selected by the user. Loses an object and shifts to another if the speed of the first one is too high.
+
+**Pros**: comparatively good resistance to noise and obstructions.
+
+**Cons**: the accuracy of tracking objects depends on the data on which the model was trained, which means that the algorithm may poorly track some objects selected by the user. Loses an object and shifts to another if the speed of the first one is too high.
 
 Device|pc | rasp
 :-:|:-: | :-:
@@ -73,8 +77,11 @@ Average FPS | 20 | 1.9
 
 ### MOSSE Tracker
 MOSSE Tracker is based on the calculation of adaptive correlations in Fourier space. The filter minimizes the sum of squared errors between the actual correlation output and the predicted correlation output. This tracker is robust to changes in lighting, scale, pose, and non-rigid deformations of the object.
-Pros: very high tracking speed, more successful in continuing tracking the object if it was lost.
-Cons: high likelihood of continuing tracking if the subject is lost and does not appear in the frame.
+
+**Pros**: very high tracking speed, more successful in continuing tracking the object if it was lost.
+
+**Cons**: high likelihood of continuing tracking if the subject is lost and does not appear in the frame.
+
 Device|pc | rasp
 :-:|:-: | :-:
 Output Video| ![](pc_results/pc_v1_MOSSE_opt.gif) | ![](rasp_results/rasp_v1_MOSSE_opt.gif)
@@ -82,8 +89,11 @@ Average FPS | N | N
 
 ### CSRT Tracker
 CSRT Tracker uses spatial reliability maps for adjusting the filter support to the part of the selected region from the frame for tracking, which gives an ability to increase the search area and track non-rectangular objects. Reliability indices reflect the quality of the studied filters by channel and are used as weights for localization. Thus, using HoGs and Colornames as feature sets, the algorithm performs relatively well.
-Pros: among the previous algorithms it shows comparatively better accuracy, resistance to overlapping by other objects.
-Cons: sufficiently low speed, an unstable operation when the object is lost.
+
+**Pros**: among the previous algorithms it shows comparatively better accuracy, resistance to overlapping by other objects.
+
+**Cons**: sufficiently low speed, an unstable operation when the object is lost.
+
 Device|pc | rasp
 :-:|:-: | :-:
 Output Video| ![](pc_results/pc_v1_CSRT_opt.gif) | ![](rasp_results/rasp_v1_CSRT_opt.gif)
