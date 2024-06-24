@@ -69,7 +69,7 @@ Pros: very high tracking speed, more successful in continuing tracking the objec
 Cons: high likelihood of continuing tracking if the subject is lost and does not appear in the frame.
 machiine|pc | rasp
 :-:|:-: | :-:
-video|![](pc_results/pc_v1_MOSSE.gif) | ![](rasp_results/rasp_v1_MOSSE.gif)
+video|![](pc_results/pc_v1_MOSSE_opt.gif) | ![](rasp_results/rasp_v1_MOSSE_opt.gif)
 Average FPS | N | N
 
 ### CSRT Tracker
