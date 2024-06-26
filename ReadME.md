@@ -4,6 +4,9 @@
 In this experiment, Eight known object tracking algorithms were tested on both PC and RASP to evaluate their performance regarding tracking accuracy and time efficiency.
 
 Eight different trackers were tested on a sample video.
+This video includes a scene of road intersection with vehicles and perestrians. 
+The test is done by tracking a pedestrian (bounding box previously extracted by manual selection).
+
 
 
 ### Boosting Tracker
