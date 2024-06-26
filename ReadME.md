@@ -13,8 +13,9 @@ The test is done by tracking a pedestrian (bounding box previously extracted by 
 The Boosting Tracker is based on the AdaBoost algorithm. This algorithm adjusts the weights of objects that are misclassified, enabling a less robust classifier to concentrate on identifying them. As the classifier undergoes “online” training, the user identifies the frame containing the object to be tracked. Initially, this object is considered a correct detection, while the surrounding objects are deemed background.
 Upon receiving a new frame, the classifier evaluates the detection pixels around the object from the previous frame, and the object’s new location is determined by the area with the highest score.
 
-Advantages: The tracker is quite precise in following the object, despite the algorithm being considered outdated.
-Disadvantages: The tracking speed is relatively slow, it’s highly sensitive to noise and obstructions, and it lacks the capability to cease tracking once the object goes missing.
+**Pros**: The tracker is quite precise in following the object, despite the algorithm being considered outdated.
+
+**Cons**: The tracking speed is relatively slow, it’s highly sensitive to noise and obstructions, and it lacks the capability to cease tracking once the object goes missing.
 
 
 Device|pc | rasp
@@ -24,8 +25,10 @@ Average FPS | 37.8 | 17.6
 
 ### MIL (Multiple Instance Learning) Tracker
 MIL Tracker has the same approach as BOOSTING, however, instead of guessing where the tracked object is in the next frame, an approach is used in which several potentially positive objects, called a “bag”, are selected around a positive definite object. A positive “bag” contains at least one positive result.
-Pros: more robust to noise, shows fairly good accuracy.
-Cons: relatively low speed and the impossibility of stopping tracking when the object is lost.
+
+**Pros**: more robust to noise, shows fairly good accuracy.
+
+**Cons**: relatively low speed and the impossibility of stopping tracking when the object is lost.
 
 Device|pc | rasp
 :-:|:-: | :-:
@@ -34,8 +37,10 @@ Average FPS | 12.4 | 6.8
 
 ### KCF (Kernelized Correlation Filters) Tracker
 KCF Tracker is a combination of two algorithms: BOOSTING and MIL. The concept of the method is that a set of images from a “bag” obtained by the MIL method has many overlapping areas. Correlation filtering applied to these areas makes it possible to track the movement of an object with high accuracy and to predict its further position.
-Pros: sufficiently high speed and accuracy, stops tracking when the tracked object is lost.
-Cons: inability to continue tracking after the loss of the object.
+
+**Pros**: sufficiently high speed and accuracy, stops tracking when the tracked object is lost.
+
+**Cons**: inability to continue tracking after the loss of the object.
 
 Device|pc | rasp
 :-:|:-: | :-:
@@ -91,7 +96,7 @@ Output Video| ![](pc_results/pc_v1_MOSSE_opt.gif) | ![](rasp_results/rasp_v1_MOS
 Average FPS | N | N
 
 ### CSRT Tracker
-CSRT Tracker uses spatial reliability maps for adjusting the filter support to the part of the selected region from the frame for tracking, which gives an ability to increase the search area and track non-rectangular objects. Reliability indices reflect the quality of the studied filters by channel and are used as weights for localization. Thus, using HoGs and Colornames as feature sets, the algorithm performs relatively well.
+CSRT (Channel and Spatial Reliability Tracking) Tracker uses spatial reliability maps for adjusting the filter support to the part of the selected region from the frame for tracking, which gives an ability to increase the search area and track non-rectangular objects. Reliability indices reflect the quality of the studied filters by channel and are used as weights for localization. Thus, using HoGs and Colornames as feature sets, the algorithm performs relatively well.
 
 **Pros**: among the previous algorithms it shows comparatively better accuracy, resistance to overlapping by other objects.
 
