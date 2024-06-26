@@ -112,7 +112,7 @@ Average FPS | 58.8 | 19.4
 ## Experiment II: Testing SORT Method
 ![alt text](SORT.jpg)
 
-The SORT algorithm is a real-time effective tracking algorithm. It combines the concepts of Kalman filters and Hungarian algorithms to track objects.
+The SORT (Simple Online and Realtime Tracking) algorithm is a real-time effective tracking algorithm. It combines the concepts of Kalman filters and Hungarian algorithms to track objects.
 
 Detection: The SORT algorithm starts by using a detection algorithm, such as a deep learning-based object detector, to identify objects in the first frame of the video sequence. Each detected object is assigned a unique identification number.
 
